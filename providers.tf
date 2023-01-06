@@ -11,7 +11,17 @@ terraform {
     storage_account_name = "tfstate31177"
     container_name       = "tfstate"
     key                  = "terraform.tfstate"
+    access_key           = var.STORAGE_ACCT_ACCESS_KEY
   }
+}
+
+provider "azurerm" {
+  features {}
+
+  subscription_id = var.MAC_UE_TENANT_HUB_PROD_SUB_subscription_id
+  client_id       = var.MAC_UE_TENANT_HUB_PROD_SUB_client_id
+  client_secret   = var.MAC_UE_TENANT_HUB_PROD_SUB_client_secret
+  tenant_id       = var.MAC_UE_TENANT_HUB_PROD_SUB_tenant_id
 }
 
 provider "azurerm" {
