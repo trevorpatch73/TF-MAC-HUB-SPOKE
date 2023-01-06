@@ -1,3 +1,9 @@
+variable "STORAGE_ACCT_ACCESS_KEY" {
+  type        = string
+  description = "MAPS TO ENVIRONMENTAL VARIABLE TF_VAR_STORAGE_ACCT_ACCESS_KEY"
+}
+
+// DIVIDER
 variable "MAC_UE_TENANT_HUB_PROD_SUB_client_id" {
   type        = string
   description = "MAPS TO ENVIRONMENTAL VARIABLE TF_VAR_MAC_UE_TENANT_HUB_PROD_SUB_client_id"
