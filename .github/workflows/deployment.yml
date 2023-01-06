@@ -11,7 +11,7 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     env:
-      terraform_status: apply
+      terraform_status: destroy
 
       TF_VAR_MAC_UE_TENANT_HUB_PROD_SUB_client_id: ${{ secrets.MAC_UE_TENANT_HUB_PROD_SUB_client_id }}
       TF_VAR_MAC_UE_TENANT_HUB_PROD_SUB_client_secret: ${{ secrets.MAC_UE_TENANT_HUB_PROD_SUB_client_secret }}
