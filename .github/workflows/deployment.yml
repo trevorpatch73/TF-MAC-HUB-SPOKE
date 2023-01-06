@@ -67,7 +67,7 @@ jobs:
       - name: Terraform Apply
         id: apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push' && env.TERRAFORM_STATUS == 'apply'
-        run: terraform apply -auto-approve
+        run: terraform apply --auto-approve
         continue-on-error: true
 
       - name: Terraform Apply Status
@@ -79,4 +79,4 @@ jobs:
         id: destroy
         if: github.ref == 'refs/heads/main' && github.event_name == 'push' && env.TERRAFORM_STATUS == 'destroy'
         run: | 
-          terraform destroy -auto-approve                               
+          terraform destroy --auto-approve                               
