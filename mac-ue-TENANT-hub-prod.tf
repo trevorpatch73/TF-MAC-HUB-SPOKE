@@ -155,7 +155,7 @@ SECTION DISABLED FOR DEMO, NO EXPRESS ROUTE AVAILABILITY */
 
 resource "azurerm_public_ip" "MAC_UE_TENANT_HUB_PROD_ER_VNG_PIP" {
   provider = azurerm.MAC_UE_TENANT_HUB_PROD_SUB
-    
+
   name                = "MAC-UE-TENANT-HUB-PROD-ER-VNG-PIP"
   resource_group_name = azurerm_resource_group.MAC_UE_TENANT_HUB_PROD_RG.name
   location            = azurerm_resource_group.MAC_UE_TENANT_HUB_PROD_RG.location
@@ -177,21 +177,21 @@ resource "azurerm_public_ip" "MAC_UE_TENANT_HUB_PROD_ER_VNG_PIP" {
 
 resource "azurerm_virtual_network_gateway" "MAC_UE_TENANT_HUB_EXPRESS_ROUTE_VIRTUAL_NETWORK_GATEWAY" {
   provider = azurerm.MAC_UE_TENANT_HUB_PROD_SUB
-    
+
   name                = "MAC-UE-TENANT-HUB-ER-VNG"
   location            = azurerm_resource_group.MAC_UE_TENANT_HUB_PROD_RG.location
   resource_group_name = azurerm_resource_group.MAC_UE_TENANT_HUB_PROD_RG.name
   // CHANGE THESE TO THE AZ HA REDUNDANT SKU 
-  sku                 = "Standard"
+  sku = "Standard"
 
-  type                = "ExpressRoute"
-  vpn_type            = "PolicyBased"
+  type     = "ExpressRoute"
+  vpn_type = "PolicyBased"
 
   ip_configuration {
-      name                          = "MAC-UE-TENANT-HUB-ER-VNG-IP-CONFIGURATION"
-      private_ip_address_allocation = "Dynamic"
-      subnet_id                     = azurerm_subnet.MAC_UE_TENANT_HUB_PROD_GATEWAY_SUBNET.id
-      public_ip_address_id          = azurerm_public_ip.MAC_UE_TENANT_HUB_PROD_ER_VNG_PIP.id
+    name                          = "MAC-UE-TENANT-HUB-ER-VNG-IP-CONFIGURATION"
+    private_ip_address_allocation = "Dynamic"
+    subnet_id                     = azurerm_subnet.MAC_UE_TENANT_HUB_PROD_GATEWAY_SUBNET.id
+    public_ip_address_id          = azurerm_public_ip.MAC_UE_TENANT_HUB_PROD_ER_VNG_PIP.id
   }
 
   tags = {

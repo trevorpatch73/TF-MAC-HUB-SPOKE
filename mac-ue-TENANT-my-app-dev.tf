@@ -73,7 +73,7 @@ resource "azurerm_subnet_route_table_association" "MAC_UE_TENANT_MY_APP_DEV_RT_A
 }
 
 resource "azurerm_virtual_network_peering" "MAC_UE_TENANT_MY_APP_DEV_PEER" {
-  provider = azurerm.MAC_UE_TENANT_MY_APP_DEV_SUB
+  provider   = azurerm.MAC_UE_TENANT_MY_APP_DEV_SUB
   depends_on = [azurerm_virtual_network_gateway.MAC_UE_TENANT_HUB_EXPRESS_ROUTE_VIRTUAL_NETWORK_GATEWAY]
 
   name                      = "MAC-UE-TENANT-MY-APP-DEV-PEER"
