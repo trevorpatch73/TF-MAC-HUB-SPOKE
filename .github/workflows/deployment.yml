@@ -13,7 +13,7 @@ jobs:
     env:
       TERRAFORM_STATUS: apply
 
-      TF_VAR_STORAGE_ACCT_ACCESS_KEY: ${{ secrets.STORAGE_ACCT_ACCESS_KEY }}
+      ARM_ACCESS_KEY: ${{ secrets.STORAGE_ACCT_ACCESS_KEY }}
 
       TF_VAR_MAC_UE_TENANT_HUB_PROD_SUB_client_id: ${{ secrets.MAC_UE_TENANT_HUB_PROD_SUB_client_id }}
       TF_VAR_MAC_UE_TENANT_HUB_PROD_SUB_client_secret: ${{ secrets.MAC_UE_TENANT_HUB_PROD_SUB_client_secret }}
