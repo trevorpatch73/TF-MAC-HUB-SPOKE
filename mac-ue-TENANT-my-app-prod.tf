@@ -7,9 +7,9 @@ provider "azurerm" {
   // UPDATE THIS VARIABLE TO MAKE THE SUBSCRIPTION BEING BUILT
   subscription_id = var.MAC_UE_TENANT_MY_APP_PROD_SUB_subscription_id
 
-  client_id       = var.MAC_UE_TENANT_ARM_client_id
-  client_secret   = var.MAC_UE_TENANT_ARM_client_secret
-  tenant_id       = var.MAC_UE_TENANT_ARM_tenant_id
+  client_id     = var.MAC_UE_TENANT_ARM_client_id
+  client_secret = var.MAC_UE_TENANT_ARM_client_secret
+  tenant_id     = var.MAC_UE_TENANT_ARM_tenant_id
 
   // UPDATE THIS VARIABLE TO MAKE THE SUBSCRIPTION BEING BUILT
   alias = "MAC_UE_TENANT_MY_APP_PROD_SUB"
@@ -52,7 +52,7 @@ resource "azurerm_virtual_network" "MAC_UE_TENANT_MY_APP_PROD_VNET" {
   location            = azurerm_resource_group.MAC_UE_TENANT_MY_APP_PROD_RG.location
   resource_group_name = azurerm_resource_group.MAC_UE_TENANT_MY_APP_PROD_RG.name
   // This value needs to be static assigned. Check ADD/ADR and IPAM.  
-  address_space       = ["30.1.0.0/24"]
+  address_space = ["30.1.0.0/24"]
 
   // Find and Replace should be used to update appropriate tags
   tags = {
@@ -81,8 +81,8 @@ resource "azurerm_subnet" "MAC_UE_TENANT_MY_APP_PROD_SUBNET" {
   name                 = "MAC-UE-TENANT-MY-APP-PROD-SUBNET"
   resource_group_name  = azurerm_resource_group.MAC_UE_TENANT_MY_APP_PROD_RG.name
   virtual_network_name = azurerm_virtual_network.MAC_UE_TENANT_MY_APP_PROD_VNET.name
-    // This value needs to be static assigned. Check ADD/ADR and IPAM. 
-  address_prefixes     = ["30.1.0.0/24"]
+  // This value needs to be static assigned. Check ADD/ADR and IPAM. 
+  address_prefixes = ["30.1.0.0/24"]
 }
 
 resource "azurerm_route_table" "MAC_UE_TENANT_MY_APP_PROD_RT" {

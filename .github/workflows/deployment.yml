@@ -11,7 +11,7 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     env:
-      TERRAFORM_STATUS: destroy
+      TERRAFORM_STATUS: apply
       #TF_LOG: "DEBUG"
 
       ARM_ACCESS_KEY: ${{ secrets.STORAGE_ACCT_ACCESS_KEY }}

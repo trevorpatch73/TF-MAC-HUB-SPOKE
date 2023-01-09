@@ -29,7 +29,7 @@ terraform {
 provider "azurerm" {
   features {}
 
-  client_id       = var.MAC_UE_TENANT_ARM_client_id
-  client_secret   = var.MAC_UE_TENANT_ARM_client_secret
-  tenant_id       = var.MAC_UE_TENANT_ARM_tenant_id
+  client_id     = var.MAC_UE_TENANT_ARM_client_id
+  client_secret = var.MAC_UE_TENANT_ARM_client_secret
+  tenant_id     = var.MAC_UE_TENANT_ARM_tenant_id
 }

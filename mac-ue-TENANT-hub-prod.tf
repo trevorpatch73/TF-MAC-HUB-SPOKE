@@ -7,9 +7,9 @@ provider "azurerm" {
   // UPDATE THIS VARIABLE TO MAKE THE SUBSCRIPTION BEING BUILT
   subscription_id = var.MAC_UE_TENANT_HUB_PROD_SUB_subscription_id
 
-  client_id       = var.MAC_UE_TENANT_ARM_client_id
-  client_secret   = var.MAC_UE_TENANT_ARM_client_secret
-  tenant_id       = var.MAC_UE_TENANT_ARM_tenant_id
+  client_id     = var.MAC_UE_TENANT_ARM_client_id
+  client_secret = var.MAC_UE_TENANT_ARM_client_secret
+  tenant_id     = var.MAC_UE_TENANT_ARM_tenant_id
 
   // UPDATE THIS VARIABLE TO MAKE THE SUBSCRIPTION BEING BUILT
   alias = "MAC_UE_TENANT_HUB_PROD_SUB"
@@ -53,7 +53,7 @@ resource "azurerm_virtual_network" "MAC_UE_TENANT_HUB_PROD_VNET" {
   location            = azurerm_resource_group.MAC_UE_TENANT_HUB_PROD_RG.location
   resource_group_name = azurerm_resource_group.MAC_UE_TENANT_HUB_PROD_RG.name
   // This value needs to be static assigned. Check ADD/ADR and IPAM.
-  address_space       = ["30.0.0.0/16"]
+  address_space = ["30.0.0.0/16"]
 
   // Find and Replace should be used to update appropriate tags
   tags = {
@@ -80,9 +80,9 @@ resource "azurerm_virtual_network_peering" "MAC_UE_TENANT_HUB_PROD_PEER_30_1_0_0
 
   // Find and replace should update everything prior to PEER.
   // You will need to update the trailing network dot dec value
-  name                      = "MAC-UE-TENANT-HUB-PROD-PEER-30-1-0-0"
-  resource_group_name       = azurerm_resource_group.MAC_UE_TENANT_HUB_PROD_RG.name
-  virtual_network_name      = azurerm_virtual_network.MAC_UE_TENANT_HUB_PROD_VNET.name
+  name                 = "MAC-UE-TENANT-HUB-PROD-PEER-30-1-0-0"
+  resource_group_name  = azurerm_resource_group.MAC_UE_TENANT_HUB_PROD_RG.name
+  virtual_network_name = azurerm_virtual_network.MAC_UE_TENANT_HUB_PROD_VNET.name
   // Be sure to update the resource below for the spoke vnent actually being built.
   remote_virtual_network_id = azurerm_virtual_network.MAC_UE_TENANT_MY_APP_PROD_VNET.id
 
@@ -92,9 +92,9 @@ resource "azurerm_virtual_network_peering" "MAC_UE_TENANT_HUB_PROD_PEER_30_1_0_0
 
   // Be sure to update the resource below for the spoke vnent actually being built.
   depends_on = [
-    azurerm_virtual_network.MAC_UE_TENANT_HUB_PROD_VNET, 
+    azurerm_virtual_network.MAC_UE_TENANT_HUB_PROD_VNET,
     azurerm_virtual_network.MAC_UE_TENANT_MY_APP_PROD_VNET
-    ]
+  ]
 }
 
 resource "azurerm_virtual_network_peering" "MAC_UE_TENANT_HUB_PROD_PEER_30_2_0_0" {
@@ -102,9 +102,9 @@ resource "azurerm_virtual_network_peering" "MAC_UE_TENANT_HUB_PROD_PEER_30_2_0_0
 
   // Find and replace should update everything prior to PEER.
   // You will need to update the trailing network dot dec value
-  name                      = "MAC-UE-TENANT-HUB-PROD-PEER-30-2-0-0"
-  resource_group_name       = azurerm_resource_group.MAC_UE_TENANT_HUB_PROD_RG.name
-  virtual_network_name      = azurerm_virtual_network.MAC_UE_TENANT_HUB_PROD_VNET.name
+  name                 = "MAC-UE-TENANT-HUB-PROD-PEER-30-2-0-0"
+  resource_group_name  = azurerm_resource_group.MAC_UE_TENANT_HUB_PROD_RG.name
+  virtual_network_name = azurerm_virtual_network.MAC_UE_TENANT_HUB_PROD_VNET.name
   // Be sure to update the resource below for the spoke vnent actually being built.  
   remote_virtual_network_id = azurerm_virtual_network.MAC_UE_TENANT_MY_APP_TEST_VNET.id
 
@@ -114,9 +114,9 @@ resource "azurerm_virtual_network_peering" "MAC_UE_TENANT_HUB_PROD_PEER_30_2_0_0
 
   // Be sure to update the resource below for the spoke vnent actually being built.
   depends_on = [
-    azurerm_virtual_network.MAC_UE_TENANT_HUB_PROD_VNET, 
+    azurerm_virtual_network.MAC_UE_TENANT_HUB_PROD_VNET,
     azurerm_virtual_network.MAC_UE_TENANT_MY_APP_TEST_VNET
-    ]
+  ]
 }
 
 resource "azurerm_virtual_network_peering" "MAC_UE_TENANT_HUB_PROD_PEER_30_3_0_0" {
@@ -124,9 +124,9 @@ resource "azurerm_virtual_network_peering" "MAC_UE_TENANT_HUB_PROD_PEER_30_3_0_0
 
   // Find and replace should update everything prior to PEER.
   // You will need to update the trailing network dot dec value
-  name                      = "MAC-UE-TENANT-HUB-PROD-PEER-30-3-0-0"
-  resource_group_name       = azurerm_resource_group.MAC_UE_TENANT_HUB_PROD_RG.name
-  virtual_network_name      = azurerm_virtual_network.MAC_UE_TENANT_HUB_PROD_VNET.name
+  name                 = "MAC-UE-TENANT-HUB-PROD-PEER-30-3-0-0"
+  resource_group_name  = azurerm_resource_group.MAC_UE_TENANT_HUB_PROD_RG.name
+  virtual_network_name = azurerm_virtual_network.MAC_UE_TENANT_HUB_PROD_VNET.name
   // Be sure to update the resource below for the spoke vnent actually being built.    
   remote_virtual_network_id = azurerm_virtual_network.MAC_UE_TENANT_MY_APP_DEV_VNET.id
 
@@ -136,9 +136,9 @@ resource "azurerm_virtual_network_peering" "MAC_UE_TENANT_HUB_PROD_PEER_30_3_0_0
 
   // Be sure to update the resource below for the spoke vnent actually being built.  
   depends_on = [
-    azurerm_virtual_network.MAC_UE_TENANT_HUB_PROD_VNET, 
+    azurerm_virtual_network.MAC_UE_TENANT_HUB_PROD_VNET,
     azurerm_virtual_network.MAC_UE_TENANT_MY_APP_DEV_VNET
-    ]
+  ]
 }
 
 // GATEWAY SUBNET FOR THE EXPRESS ROUTE AND EXPRESS ROUTE VIRTUAL NETWORK GATEWAY
@@ -154,7 +154,7 @@ resource "azurerm_subnet" "MAC_UE_TENANT_HUB_PROD_GATEWAY_SUBNET" {
   resource_group_name  = azurerm_resource_group.MAC_UE_TENANT_HUB_PROD_RG.name
   virtual_network_name = azurerm_virtual_network.MAC_UE_TENANT_HUB_PROD_VNET.name
   // This value needs to be static assigned. Check ADD/ADR and IPAM.  
-  address_prefixes     = ["30.0.0.0/24"]
+  address_prefixes = ["30.0.0.0/24"]
 }
 
 /* SECTION DISABLED FOR DEMO, NO EXPRESS ROUTE AVAILABILITY
@@ -313,9 +313,9 @@ resource "azurerm_route" "MAC_UE_TENANT_HUB_PROD_GATEWAY_SUBNET_RT_30_1_0_0" {
   provider = azurerm.MAC_UE_TENANT_HUB_PROD_SUB
 
   // Find and Replace on the schema should up too RT, but manually update the network
-  name                   = "MAC-UE-TENANT-HUB-PROD-GATEWAY-SUBNET-RT-30-1-0-0"
-  resource_group_name    = azurerm_resource_group.MAC_UE_TENANT_HUB_PROD_RG.name
-  route_table_name       = azurerm_route_table.MAC_UE_TENANT_HUB_PROD_GATEWAY_SUBNET_RT.name
+  name                = "MAC-UE-TENANT-HUB-PROD-GATEWAY-SUBNET-RT-30-1-0-0"
+  resource_group_name = azurerm_resource_group.MAC_UE_TENANT_HUB_PROD_RG.name
+  route_table_name    = azurerm_route_table.MAC_UE_TENANT_HUB_PROD_GATEWAY_SUBNET_RT.name
   // AZURE REQUIRES AN ENTRY FOR EACH REMOTE SUBNET IN SPOKE VNET, 
   // NOT THE MACRO VNET CIDR; SUMMARY ROUTING DOES NOT WORK
   address_prefix         = "30.1.0.0/24"
@@ -331,9 +331,9 @@ resource "azurerm_route" "MAC_UE_TENANT_HUB_PROD_GATEWAY_SUBNET_RT_30_2_0_0" {
   provider = azurerm.MAC_UE_TENANT_HUB_PROD_SUB
 
   // Find and Replace on the schema should up too RT, but manually update the network
-  name                   = "MAC-UE-TENANT-HUB-PROD-GATEWAY-SUBNET-RT-30-2-0-0"
-  resource_group_name    = azurerm_resource_group.MAC_UE_TENANT_HUB_PROD_RG.name
-  route_table_name       = azurerm_route_table.MAC_UE_TENANT_HUB_PROD_GATEWAY_SUBNET_RT.name
+  name                = "MAC-UE-TENANT-HUB-PROD-GATEWAY-SUBNET-RT-30-2-0-0"
+  resource_group_name = azurerm_resource_group.MAC_UE_TENANT_HUB_PROD_RG.name
+  route_table_name    = azurerm_route_table.MAC_UE_TENANT_HUB_PROD_GATEWAY_SUBNET_RT.name
   // AZURE REQUIRES AN ENTRY FOR EACH REMOTE SUBNET IN SPOKE VNET, 
   // NOT THE MACRO VNET CIDR; SUMMARY ROUTING DOES NOT WORK
   address_prefix         = "30.2.0.0/24"
@@ -349,9 +349,9 @@ resource "azurerm_route" "MAC_UE_TENANT_HUB_PROD_GATEWAY_SUBNET_RT_30_3_0_0" {
   provider = azurerm.MAC_UE_TENANT_HUB_PROD_SUB
 
   // Find and Replace on the schema should up too RT, but manually update the network
-  name                   = "MAC-UE-TENANT-HUB-PROD-GATEWAY-SUBNET-RT-30-3-0-0"
-  resource_group_name    = azurerm_resource_group.MAC_UE_TENANT_HUB_PROD_RG.name
-  route_table_name       = azurerm_route_table.MAC_UE_TENANT_HUB_PROD_GATEWAY_SUBNET_RT.name
+  name                = "MAC-UE-TENANT-HUB-PROD-GATEWAY-SUBNET-RT-30-3-0-0"
+  resource_group_name = azurerm_resource_group.MAC_UE_TENANT_HUB_PROD_RG.name
+  route_table_name    = azurerm_route_table.MAC_UE_TENANT_HUB_PROD_GATEWAY_SUBNET_RT.name
   // AZURE REQUIRES AN ENTRY FOR EACH REMOTE SUBNET IN SPOKE VNET, 
   // NOT THE MACRO VNET CIDR; SUMMARY ROUTING DOES NOT WORK
   address_prefix         = "30.3.0.0/24"
@@ -377,7 +377,7 @@ resource "azurerm_subnet" "MAC_UE_TENANT_HUB_PROD_AZURE_FIREWALL_SUBNET" {
   resource_group_name  = azurerm_resource_group.MAC_UE_TENANT_HUB_PROD_RG.name
   virtual_network_name = azurerm_virtual_network.MAC_UE_TENANT_HUB_PROD_VNET.name
   // This value needs to be static assigned. Check ADD/ADR and IPAM.
-  address_prefixes     = ["30.0.1.0/24"]
+  address_prefixes = ["30.0.1.0/24"]
 }
 
 resource "azurerm_subnet" "MAC_UE_TENANT_HUB_PROD_AZURE_FIREWALL_MANAGEMENT_SUBNET" {
@@ -388,7 +388,7 @@ resource "azurerm_subnet" "MAC_UE_TENANT_HUB_PROD_AZURE_FIREWALL_MANAGEMENT_SUBN
   resource_group_name  = azurerm_resource_group.MAC_UE_TENANT_HUB_PROD_RG.name
   virtual_network_name = azurerm_virtual_network.MAC_UE_TENANT_HUB_PROD_VNET.name
   // This value needs to be static assigned. Check ADD/ADR and IPAM.
-  address_prefixes     = ["30.0.2.0/24"]
+  address_prefixes = ["30.0.2.0/24"]
 }
 
 resource "azurerm_public_ip" "MAC_UE_TENANT_HUB_PROD_AZURE_FW_PIP" {
