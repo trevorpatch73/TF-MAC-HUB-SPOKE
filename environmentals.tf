@@ -45,8 +45,3 @@ variable "MAC_UE_TENANT_MY_APP_DEV_SUB_subscription_id" {
   type        = string
   description = "MAPS TO ENVIRONMENTAL VARIABLE TF_VAR_MAC_UE_TENANT_MY_APP_DEV_SUB_subscription_id"
 }
-
-variable "MAC_UE_TENANT_MY_APP_DEV_SUB_tenant_id" {
-  type        = string
-  description = "MAPS TO ENVIRONMENTAL VARIABLE TF_VAR_MAC_UE_TENANT_MY_APP_DEV_SUB_tenant_id"
-}
