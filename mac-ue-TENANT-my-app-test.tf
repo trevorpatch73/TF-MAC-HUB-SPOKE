@@ -1,4 +1,25 @@
-// MACRO-LEVEL-OBJECTS
+// Terraform has cyclical issue with compliation.
+// Thus providers are masked behind an alias.
+// Each subscription gets its own alias provider.
+provider "azurerm" {
+  features {}
+
+  // UPDATE THIS VARIABLE TO MAKE THE SUBSCRIPTION BEING BUILT
+  subscription_id = var.MAC_UE_TENANT_MY_APP_TEST_SUB_subscription_id
+
+  client_id       = var.MAC_UE_TENANT_ARM_client_id
+  client_secret   = var.MAC_UE_TENANT_ARM_client_secret
+  tenant_id       = var.MAC_UE_TENANT_ARM_tenant_id
+
+  // UPDATE THIS VARIABLE TO MAKE THE SUBSCRIPTION BEING BUILT
+  alias = "MAC_UE_TENANT_MY_APP_TEST_SUB"
+}
+
+// The schema used is:
+// <cloud>_<region>_<tenant>_<application>_<environment>_<object>
+// where "legacy" should be used for <application> in on-prem data center mirrors
+// Find and Replace should be used to update schema on new build
+// Nothing more should be done on a BAU basis
 resource "azurerm_resource_group" "MAC_UE_TENANT_MY_APP_TEST_RG" {
   provider = azurerm.MAC_UE_TENANT_MY_APP_TEST_SUB
 
@@ -19,14 +40,21 @@ resource "azurerm_resource_group" "MAC_UE_TENANT_MY_APP_TEST_RG" {
   }
 }
 
+// The schema used is:
+// <cloud>_<region>_<tenant>_<application>_<environment>_<object>
+// where "legacy" should be used for <application> in on-prem data center mirrors
+// Find and Replace should be used to update schema on new build
+// Nothing more should be done on a BAU basis
 resource "azurerm_virtual_network" "MAC_UE_TENANT_MY_APP_TEST_VNET" {
   provider = azurerm.MAC_UE_TENANT_MY_APP_TEST_SUB
 
   name                = "MAC-UE-TENANT-MY-APP-TEST-VNET"
   location            = azurerm_resource_group.MAC_UE_TENANT_MY_APP_TEST_RG.location
   resource_group_name = azurerm_resource_group.MAC_UE_TENANT_MY_APP_TEST_RG.name
+   // This value needs to be static assigned. Check ADD/ADR and IPAM. 
   address_space       = ["30.2.0.0/24"]
 
+  // Find and Replace should be used to update appropriate tags
   tags = {
     Application        = "Infrastructure"
     DataClassification = "Classified"
@@ -41,15 +69,27 @@ resource "azurerm_virtual_network" "MAC_UE_TENANT_MY_APP_TEST_VNET" {
   }
 }
 
+// The schema used is:
+// <cloud>_<region>_<tenant>_<application>_<environment>_<object>
+// where "legacy" should be used for <application> in on-prem data center mirrors
+// Recommended to copy/paste and manually update the elements of these resources
+// Recommend provisioning enough space to put at minimum a /26 in each AZ
+// This should not be a section touched often after standup
 resource "azurerm_subnet" "MAC_UE_TENANT_MY_APP_TEST_SUBNET" {
   provider = azurerm.MAC_UE_TENANT_MY_APP_TEST_SUB
 
   name                 = "MAC-UE-TENANT-MY-APP-TEST-SUBNET"
   resource_group_name  = azurerm_resource_group.MAC_UE_TENANT_MY_APP_TEST_RG.name
   virtual_network_name = azurerm_virtual_network.MAC_UE_TENANT_MY_APP_TEST_VNET.name
+  // This value needs to be static assigned. Check ADD/ADR and IPAM.   
   address_prefixes     = ["30.2.0.0/24"]
 }
 
+// The schema used is:
+// <cloud>_<region>_<tenant>_<application>_<environment>_<object>
+// where "legacy" should be used for <application> in on-prem data center mirrors
+// Find and Replace should be used to update schema on new build
+// This should not be a section touched often after standup
 resource "azurerm_route_table" "MAC_UE_TENANT_MY_APP_TEST_RT" {
   provider = azurerm.MAC_UE_TENANT_MY_APP_TEST_SUB
 
