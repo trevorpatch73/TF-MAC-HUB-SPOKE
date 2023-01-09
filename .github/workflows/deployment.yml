@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TERRAFORM_STATUS: apply
-      TF_LOG: "DEBUG"
+      #TF_LOG: "DEBUG"
 
       ARM_ACCESS_KEY: ${{ secrets.STORAGE_ACCT_ACCESS_KEY }}
 
