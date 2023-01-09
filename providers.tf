@@ -21,6 +21,8 @@ provider "azurerm" {
   client_id       = var.MAC_UE_TENANT_HUB_PROD_SUB_client_id
   client_secret   = var.MAC_UE_TENANT_HUB_PROD_SUB_client_secret
   tenant_id       = var.MAC_UE_TENANT_HUB_PROD_SUB_tenant_id
+
+  alias = "MAC_UE_TENANT_HUB_PROD_SUB"
 }
 
 provider "azurerm" {
