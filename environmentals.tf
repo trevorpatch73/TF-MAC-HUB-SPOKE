@@ -1,4 +1,4 @@
-variable "STORAGE_ACCT_ACCESS_KEY" {
+variable "ARM_ACCESS_KEY" {
   type        = string
   description = "MAPS TO ENVIRONMENTAL VARIABLE ARM_ACCESS_KEY"
 }
