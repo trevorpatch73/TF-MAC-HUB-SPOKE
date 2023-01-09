@@ -1,7 +1,9 @@
+/*
 variable "ARM_ACCESS_KEY" {
   type        = string
   description = "MAPS TO ENVIRONMENTAL VARIABLE ARM_ACCESS_KEY"
 }
+*/
 
 // DIVIDER
 variable "MAC_UE_TENANT_HUB_PROD_SUB_client_id" {
